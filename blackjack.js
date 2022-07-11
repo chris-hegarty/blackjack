@@ -3,6 +3,11 @@ console.log("May the odds be ever in your favor.");
 // Store suits and faces in their own arrays
 let suits = ["Hearts","Clubs","Spades","Diamonds"];
 let faces = ["Ace","King","Queen","Jack",2,3,4,5,6,7,8,9,10];
+//need to create these arrays outside of their functions to be able to access and change them.
+let computerHand = [];
+let playerHand = [];
+let computerScore = [];
+let playerScore = [];
 // Combine these with nested for loops
 //pretend Ace is 11 starting off, change to one later.
 //wrap it all in a function.
@@ -99,11 +104,11 @@ userShuffle.addEventListener("click", (e) => {
 
 initialDeal.addEventListener("click", (e) => {
 //remove first two value indices from card array and store them in a new array for the computer and the player:
-let computerHand = cardDeck.splice(0,2);
-let playerHand = cardDeck.splice(0,2);
+computerHand = cardDeck.splice(0,2);
+playerHand = cardDeck.splice(0,2);
 // store the value of each pair of cards:
-const computerScore = computerHand[0].value + computerHand[1].value;
-const playerScore = playerHand[0].value + playerHand[1].value;
+computerScore = computerHand[0].value + computerHand[1].value;
+playerScore = playerHand[0].value + playerHand[1].value;
 console.log(computerHand);
 console.log(playerHand);
 console.log( computerScore );    
@@ -153,6 +158,8 @@ console.log(playerHit);
 playerHit.addEventListener("click", (e) => {
 console.log("CLICKED");
 });
+
+
 
 
 
