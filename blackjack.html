@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./blackjack.css" />
+
+    <title>Blackjack</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>BLACKJACK</h1>
+      </header>
+      <section id="checkpoint">
+        <p class="age-check">Must be 16 or older to play.</p>
+        <p class="age-check">Please enter your name and date of birth:</p>
+        <form class="age-check" action="">
+          <label for="player-name">Name:</label>
+          <input type="text" name="playername" id="player-name" />
+          <label for="player-dob">Date of Birth</label>
+          <input type="date" name="playerdob" id="player-dob" />
+        </form>
+        <button class="age-check" id="age-button">Submit</button>
+        <p id="welcome-message"></p>
+      </section>
+      <section class="hidden" id="table">
+        <div id="dealer" class="flex column center align-items-center">
+          <div id="deck">
+            <div class="card" id="card-in-deck"></div>
+          </div>
+          <div>
+            <button id="shuffle">SHUFFLE</button>
+            <button id="deal-initial" class="display-none">DEAL</button>
+          </div>
+        </div>
+
+        <div id="who-wins"></div>
+
+        <div id="cards" class="flex space-evenly">
+          <div class="hand" id="computer">
+            <div class="opponents flex center" id="house">
+              <h2>HOUSE</h2>
+            </div>
+            <div id="computer-outcomes" class="flex space-between">
+              <div id="wins">
+                <p>WINS</p>
+                <p id="computer-wins-num">0</p>
+              </div>
+              <div id="losses">
+                <p>LOSSES</p>
+                <p id="computer-losses-num">0</p>
+              </div>
+              <div id="ties">
+                <p>TIES</p>
+                <p class="ties-num">0</p>
+              </div>
+            </div>
+            <div class="card" id="computer-card"></div>
+          </div>
+          <div class="hand" id="player">
+            <div class="opponents flex center" id="player">
+              <h2>PLAYER</h2>
+            </div>
+            <div id="player-outcomes" class="flex space-between">
+              <div id="wins">
+                <p>WINS</p>
+                <p id="player-wins-num">0</p>
+              </div>
+              <div id="losses">
+                <p>LOSSES</p>
+                <p id="player-losses-num">0</p>
+              </div>
+              <div id="ties">
+                <p>TIES</p>
+                <p class="ties-num">0</p>
+              </div>
+            </div>
+            <div class="card" id="player-card"></div>
+            <div id="player-choices"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="blackjack.js"></script>
+  </body>
+</html>

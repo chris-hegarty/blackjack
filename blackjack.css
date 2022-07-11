@@ -1,0 +1,41 @@
+* {
+    border: 1px solid #efefef;
+}
+html {
+    box-sizing: border-box;
+}
+.display-none {
+    display: none;
+}
+.hidden {
+    visibility: hidden;
+}
+.card {
+    width: 200px;
+    height: 280px;
+    border: 1px solid blue;
+}
+.flex {
+    display: flex;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+.column {
+    flex-direction: column;
+}
+.center {
+    justify-content: center;
+}
+.align-items-center {
+    align-items: center;
+}
+.space-around {
+    justify-content: space-around;
+}
+.space-between {
+    justify-content: space-between;
+}
+.space-evenly {
+    justify-content: space-evenly;
+}
