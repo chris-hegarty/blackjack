@@ -1,4 +1,4 @@
-
+// put "HIT" in a function, then add that to the event listener.
 console.log("May the odds be ever in your favor.");
 // Store suits and faces in their own arrays
 let suits = ["Hearts","Clubs","Spades","Diamonds"];
@@ -6,8 +6,11 @@ let faces = ["Ace","King","Queen","Jack",2,3,4,5,6,7,8,9,10];
 //need to create these arrays outside of their functions to be able to access and change them.
 let computerHand = [];
 let playerHand = [];
-let computerScore = [];
-let playerScore = [];
+let computerScore = 0;
+let playerScore = 0;
+let playerCard = document.getElementById("player-card");
+let whoWins = document.getElementById("who-wins");
+let newCard = [];
 // Combine these with nested for loops
 //pretend Ace is 11 starting off, change to one later.
 //wrap it all in a function.
@@ -109,12 +112,12 @@ playerHand = cardDeck.splice(0,2);
 // store the value of each pair of cards:
 computerScore = computerHand[0].value + computerHand[1].value;
 playerScore = playerHand[0].value + playerHand[1].value;
-console.log(computerHand);
+// console.log(computerHand);
 console.log(playerHand);
-console.log( computerScore );    
+// console.log( computerScore );    
 console.log( playerScore );
 //output the player's face, suit and value to the page.
-playerCard = document.getElementById("player-card");
+// playerCard = document.getElementById("player-card");
 playerCard.innerHTML = 
 `<div>
     <span>
@@ -153,26 +156,35 @@ playerChoices.append(standButton);
 
 //---------HIT - Deal one card-----------------
 
+function hit(){
+    newCard = cardDeck.shift();
+    console.log(newCard.value);
+    playerScore += newCard.value;
+    let createNewCard = document.createElement("div");
+    createNewCard.innerHTML = 
+    `<div>
+            <span>${playerHand[0].face} of    
+            ${playerHand[0].suit} </span>
+            <div> Total = ${playerScore}</div>
+        </div>
+    `;
+    playerCard.append(createNewCard);
+    if(playerScore > 21){
+        whoWins.innerHTML = `<h3>HOUSE WINS</h3>`;
+        document.getElementById("computer-wins-num").innerHTML++;
+        document.getElementById("player-losses-num").innerHTML++;
+    }
+    console.log(playerScore);
+}
+
 let playerHit = document.getElementById("hit-button");
-console.log(playerHit);
-playerHit.addEventListener("click", (e) => {
-console.log("CLICKED");
-});
+playerHit.addEventListener("click", hit);
 
 
-
-
-
-
-
-
-//-remove another two two cards from deck. (The next "first two" objects in the array.)
-//-place them into div id player. These SHOULD show the values.
-//check the sum of the values.
 //If === 21: print "PLAYER WINS!". Add 1 to wins box, add 1 to computer's loss box, end game, display NEW GAME button.
 //NEW GANE button should hide DEAL button and show SHUFFLE button.
 
-
-//---------STAND - 
+//---------STAND --------------
+// Code to deal cards to House goes here.
 
 
