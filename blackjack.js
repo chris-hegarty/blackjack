@@ -9,7 +9,9 @@ let playerHand = [];
 let computerScore = 0;
 let playerScore = 0;
 let playerCard = document.getElementById("player-card");
+let computerCard = document.getElementById("computer-card");
 let whoWins = document.getElementById("who-wins");
+let card = {};
 let newCard = [];
 // Combine these with nested for loops
 //pretend Ace is 11 starting off, change to one later.
@@ -21,7 +23,7 @@ function getDeck(){
     for (let i = 0; i < suits.length; i++) {
         for (let j = 0; j < faces.length; j++) {
             // ...to make a card object
-            let card = {
+            card = {
                 suit: suits[i],  
                 face: faces[j],
             }; 
@@ -40,6 +42,8 @@ function getDeck(){
     } 
     return deck; 
 }
+
+
 // store the return value of the function in variable so you can use it later.
 let cardDeck = getDeck();
 // console.log(cardDeck);
@@ -156,25 +160,33 @@ playerChoices.append(standButton);
 
 //---------HIT - Deal one card-----------------
 
-function hit(){
-    newCard = cardDeck.shift();
-    console.log(newCard.value);
-    playerScore += newCard.value;
+let newCardObj = cardDeck.shift();
+console.log(newCardObj);
+
+function makeNewCard(score){
     let createNewCard = document.createElement("div");
     createNewCard.innerHTML = 
     `<div>
-            <span>${playerHand[0].face} of    
-            ${playerHand[0].suit} </span>
-            <div> Total = ${playerScore}</div>
+            <span>${newCardObj.face} of    
+            ${newCardObj.suit} </span>
+            <div> Total = ${score + newCardObj.value}</div>
         </div>
     `;
-    playerCard.append(createNewCard);
-    if(playerScore > 21){
+    return createNewCard;
+}
+
+let oneCard = makeNewCard();
+console.log(oneCard);
+
+function hit(){
+    playerCard.append(makeNewCard(playerScore));
+    console.log(playerScore);
+
+    if( (playerScore + newCardObj.value) > 21){
         whoWins.innerHTML = `<h3>HOUSE WINS</h3>`;
         document.getElementById("computer-wins-num").innerHTML++;
         document.getElementById("player-losses-num").innerHTML++;
     }
-    console.log(playerScore);
 }
 
 let playerHit = document.getElementById("hit-button");
